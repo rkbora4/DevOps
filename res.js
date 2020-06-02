@@ -7,10 +7,8 @@ var express=require('express')
 
  // assign the mustache engine to .html files
 app.engine('html', mustacheExpress());
-var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
-    ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
-    mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
-    mongoURLLabel = "";
+
+// set .html as the default extension 
 app.set('view engine', 'html');
 
 app.set('views', __dirname + '/views');
@@ -35,10 +33,5 @@ app.set('views', __dirname + '/views');
         res.render('index',{"arry":arry,"val":values1});
    
        // console.log(arry);
-})});
-
-
-app.listen(port, ip);
-console.log('Server running on http://%s:%s', ip, port);
-
-module.exports = app ;
+})
+    }).listen(3000);
